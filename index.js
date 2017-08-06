@@ -6,13 +6,19 @@ var cookieParser = require('cookie-parser');
 var app = express();
 var configDB = require('./config/database.js');
 var dB = mongoose.connection;
+var index = require('./routes/index');
+var path = require('path')
 
 mongoose.connect(configDB.url, { useMongoClient: true });
 
-app.use(morgan('dev'));                                         // log every request to the console
-app.use(bodyParser.urlencoded({ extended: false}));            // parse application/x-www-form-urlencoded
-app.use(bodyParser.json());
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+
+app.use(morgan('dev'));
+app.use(bodyParser.urlencoded({ extended: false}));
 app.use(cookieParser());
+app.use(express.static(path.join(__dirname, '/public')));
+
 
 
 app.listen(8000, function() {
@@ -20,3 +26,7 @@ app.listen(8000, function() {
 });
 
 dB.on('error', console.error.bind(console, "mongo error"));
+
+app.use('/', index);
+
+module.exports = index;
