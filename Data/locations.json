@@ -1,5 +1,4 @@
-{
-  "Clients": [
+[
     {
       "name":"Ale",
       "postcode":"B4 7XG"
@@ -33,4 +32,3 @@
       "postcode":"B7 4BG"
     }
   ]
-}

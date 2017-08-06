@@ -1,5 +1,4 @@
-{
-	"Candidates": [{
+[{
 		"name": "Agnezka Seize-Soinxante-Quatre",
 		"postcode": "B42 1QZ",
 		"modeOfTransport": {
@@ -347,4 +346,3 @@
 			"speed": 15.5
 		}
 	}]
-}
