@@ -6,7 +6,7 @@ var Candidates = require('../models/candidates')
 
 module.exports = function(router) {
 
-router.get('/clients', function(req, res, next){
+router.get('/', function(req, res, next){
   mongoose.model('Clients').find({}, function (err, clients){
     if (err) {
       return console.error(err);
@@ -16,7 +16,7 @@ router.get('/clients', function(req, res, next){
   });
 });
 
-router.get('/candidates', function(req, res, next){
+router.get('/', function(req, res, next){
   mongoose.model('Candidates').find({}, function (err, candidates){
     if (err) {
       return console.error(err);
