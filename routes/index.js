@@ -1,27 +1,32 @@
 var express = require('express');
 var router = express.Router();
 var Clients = require('../models/clients')
-var Candidates = require('../models/candidates')
 var mongoose = require('mongoose')
+var Candidates = require('../models/candidates')
 
-router.get('/', function(req, res, next){
+module.exports = function(router) {
+
+router.get('/clients', function(req, res, next){
   mongoose.model('Clients').find({}, function (err, clients){
+    if (err) {
+      return console.error(err);
+    } else {
+      res.json(clients);
+    }
+  });
+});
+
+router.get('/candidates', function(req, res, next){
   mongoose.model('Candidates').find({}, function (err, candidates){
     if (err) {
       return console.error(err);
     } else {
-      res.format({
-        html: function(){
-        res.render('index', { "clients" : clients, 'candidates' : candidates });
-          },
-        json: function(){
-        res.json(clients);
-        res.json(candidates);
-        }
-      });
+      res.json(candidates);
     }
   });
 });
-})
 
-module.exports = router;
+router.get('*', function(req, res) {
+  res.render('index')
+});
+};

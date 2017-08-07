@@ -3,7 +3,6 @@ var mongoose = require('mongoose');
 var candidateSchema = mongoose.Schema({
     name: String,
     postcode: String,
-
   },
 {
   collection : 'Candidates'
